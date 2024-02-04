@@ -64,10 +64,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
             80.heightBox,
             Container(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 horizontal: 24,
               ),
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 24,
                 vertical: 24,
               ),
@@ -118,6 +118,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                 ),
                               ),
                             ),
+                            20.heightBox,
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/sign-in');
+                              },
+                              child: Text(
+                                'Sign In',
+                                style: greyTextStyle.copyWith(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )
                           ],
                         )
                       : Row(
