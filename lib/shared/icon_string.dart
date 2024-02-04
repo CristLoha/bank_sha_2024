@@ -1,0 +1,29 @@
+class IconString {
+  static const String check = 'assets/icon/ic_check.png';
+  static const String upload = 'assets/icon/ic_upload.png';
+  static const String overview = 'assets/icon/ic_overview.png';
+  static const String history = 'assets/icon/ic_history.png';
+  static const String statistic = 'assets/icon/ic_statistic.png';
+  static const String plusCircle = 'assets/icon/ic_plus_circle.png';
+  static const String topUp = 'assets/icon/ic_topup.png';
+  static const String send = 'assets/icon/ic_send.png';
+  static const String withDraw = 'assets/icon/ic_withdraw.png';
+  static const String more = 'assets/icon/ic_more.png';
+  static const String transactionCat1 = 'assets/icon/ic_transaction_cat1.png';
+  static const String transactionCat2 = 'assets/icon/ic_transaction_cat2.png';
+  static const String transactionCat3 = 'assets/icon/ic_transaction_cat3.png';
+  static const String transactionCat4 = 'assets/icon/ic_transaction_cat4.png';
+  static const String transactionCat5 = 'assets/icon/ic_transaction_cat5.png';
+  static const String editProfile = 'assets/icon/ic_edit_profile.png';
+  static const String pin = 'assets/icon/ic_pin.png';
+  static const String wallet = 'assets/icon/ic_wallet.png';
+  static const String reward = 'assets/icon/ic_reward.png';
+  static const String help = 'assets/icon/ic_help.png';
+  static const String logOut = 'assets/icon/ic_logout.png';
+  static const String data = 'assets/icon/ic_product_data.png';
+  static const String water = 'assets/icon/ic_product_water.png';
+  static const String stream = 'assets/icon/ic_product_stream.png';
+  static const String movie = 'assets/icon/ic_product_movie.png';
+  static const String food = 'assets/icon/ic_product_food.png';
+  static const String travel = 'assets/icon/ic_product_travel.png';
+}
