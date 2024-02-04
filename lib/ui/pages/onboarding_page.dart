@@ -93,72 +93,98 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  50.heightBox,
-                  Row(
-                    children: [
-                      Container(
-                        height: 12,
-                        width: 12,
-                        margin: const EdgeInsets.only(
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: currentIndex == 0
-                              ? blueColor
-                              : lightBackgroundColor,
-                        ),
-                      ),
-                      Container(
-                        height: 12,
-                        width: 12,
-                        margin: const EdgeInsets.only(
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: currentIndex == 1
-                              ? blueColor
-                              : lightBackgroundColor,
-                        ),
-                      ),
-                      Container(
-                        height: 12,
-                        width: 12,
-                        margin: const EdgeInsets.only(
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: currentIndex == 2
-                              ? blueColor
-                              : lightBackgroundColor,
-                        ),
-                      ),
-                      const Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          carouselC.nextPage();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: purpleColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              56,
+                  currentIndex == 2 ? 38.heightBox : 50.heightBox,
+                  currentIndex == 2
+                      ? Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                carouselC.nextPage();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: purpleColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    56,
+                                  ),
+                                ),
+                                minimumSize: const Size(double.infinity, 50),
+                              ),
+                              child: Text(
+                                'Get Started',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
                             ),
-                          ),
-                          minimumSize: const Size(150, 50),
+                          ],
+                        )
+                      : Row(
+                          children: [
+                            Container(
+                              height: 12,
+                              width: 12,
+                              margin: const EdgeInsets.only(
+                                right: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentIndex == 0
+                                    ? blueColor
+                                    : lightBackgroundColor,
+                              ),
+                            ),
+                            Container(
+                              height: 12,
+                              width: 12,
+                              margin: const EdgeInsets.only(
+                                right: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentIndex == 1
+                                    ? blueColor
+                                    : lightBackgroundColor,
+                              ),
+                            ),
+                            Container(
+                              height: 12,
+                              width: 12,
+                              margin: const EdgeInsets.only(
+                                right: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: currentIndex == 2
+                                    ? blueColor
+                                    : lightBackgroundColor,
+                              ),
+                            ),
+                            const Spacer(),
+                            ElevatedButton(
+                              onPressed: () {
+                                carouselC.nextPage();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: purpleColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    56,
+                                  ),
+                                ),
+                                minimumSize: const Size(150, 50),
+                              ),
+                              child: Text(
+                                'Continue',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        child: Text(
-                          'Continue',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
