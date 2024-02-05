@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/shared/img_string.dart';
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/ui/widgets/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -97,26 +98,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   currentIndex == 2
                       ? Column(
                           children: [
-                            ElevatedButton(
+                            CustomFilledButton(
+                              title: 'Get Started',
+                              width: double.infinity,
                               onPressed: () {
                                 carouselC.nextPage();
                               },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: purpleColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    56,
-                                  ),
-                                ),
-                                minimumSize: const Size(double.infinity, 50),
-                              ),
-                              child: Text(
-                                'Get Started',
-                                style: whiteTextStyle.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: semiBold,
-                                ),
-                              ),
                             ),
                             20.heightBox,
                             TextButton(
@@ -174,27 +161,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               ),
                             ),
                             const Spacer(),
-                            ElevatedButton(
-                              onPressed: () {
-                                carouselC.nextPage();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: purpleColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    56,
-                                  ),
-                                ),
-                                minimumSize: const Size(150, 50),
-                              ),
-                              child: Text(
-                                'Continue',
-                                style: whiteTextStyle.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: semiBold,
-                                ),
-                              ),
-                            ),
+                            CustomFilledButton(
+                              title: 'Continue',
+                              width: 150,
+                              onPressed: () => carouselC.nextPage(),
+                            )
                           ],
                         ),
                 ],
