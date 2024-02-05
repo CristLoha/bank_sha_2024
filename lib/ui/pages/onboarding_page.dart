@@ -1,7 +1,7 @@
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/shared/img_string.dart';
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/ui/widgets/buttons.dart';
+import 'package:bank_sha/ui/widgets/custom_filled_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -100,7 +100,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           children: [
                             CustomFilledButton(
                               title: 'Get Started',
-                              width: double.infinity,
                               onPressed: () {
                                 carouselC.nextPage();
                               },

@@ -1,18 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import '../../shared/theme.dart';
 
 class CustomFilledButton extends StatelessWidget {
   final String title;
   final double width;
-
-  final Function() onPressed;
+  final double height;
+  final Function()? onPressed;
   const CustomFilledButton({
     Key? key,
     required this.title,
-    required this.width,
-    required this.onPressed,
+    this.width = double.infinity,
+    this.height = 50,
+    this.onPressed,
   }) : super(key: key);
 
   @override
