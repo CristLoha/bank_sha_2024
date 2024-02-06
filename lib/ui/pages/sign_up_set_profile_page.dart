@@ -1,15 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/ui/widgets/custom_filled_button.dart';
 import 'package:bank_sha/ui/widgets/custom_text_form_field.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../models/sign_up_form_model.dart';
 import '../../shared/icon_string.dart';
 import '../../shared/theme.dart';
 import '../widgets/custom_image_logo.dart';
 import '../widgets/custom_title_page.dart';
 
 class SignUpSetProfilePage extends StatelessWidget {
-  const SignUpSetProfilePage({super.key});
+  final SignUpFormModel data;
+  const SignUpSetProfilePage({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

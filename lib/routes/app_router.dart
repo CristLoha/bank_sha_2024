@@ -30,12 +30,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const SignUpPage(),
         );
-      case '/sign-up-profile':
+      case '/sign-up-set-profile':
         return MaterialPageRoute(
           builder: (context) => const SignUpSetProfilePage(),
         );
 
-      case '/signup-set-ktp':
+      case '/sign-up-set-ktp':
         return MaterialPageRoute(
           builder: (context) => const SignUpSetKtpPage(),
         );
