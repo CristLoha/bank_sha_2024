@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'theme.dart';
 
 void showCustomSnackbar(BuildContext context, String message) {
@@ -9,6 +10,13 @@ void showCustomSnackbar(BuildContext context, String message) {
     backgroundColor: redColor,
     duration: const Duration(seconds: 2),
   ).show(context);
+}
+
+Future<XFile?> selectImage() async {
+  XFile? selectedImage = await ImagePicker().pickImage(
+    source: ImageSource.gallery,
+  );
+  return selectedImage;
 }
 
 // String formatCurrency(
