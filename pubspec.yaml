@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
+  another_flushbar: ^1.12.30
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0

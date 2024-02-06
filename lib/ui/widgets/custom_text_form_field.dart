@@ -5,10 +5,12 @@ import '../../shared/theme.dart';
 class CustomTextFormField extends StatelessWidget {
   final String title;
   final bool obscureText;
+  final TextEditingController? controller;
   const CustomTextFormField({
     Key? key,
     required this.title,
     this.obscureText = false,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         8.heightBox,
         TextFormField(
+          controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
             border: OutlineInputBorder(

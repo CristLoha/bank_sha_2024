@@ -1,14 +1,31 @@
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:flutter/material.dart';
-
 import '../../shared/img_string.dart';
+import '../../shared/shared_methods.dart';
 import '../../shared/theme.dart';
 import '../widgets/custom_filled_button.dart';
 import '../widgets/custom_text_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final nameC = TextEditingController(text: '');
+  final emailC = TextEditingController(text: '');
+  final passwordC = TextEditingController(text: '');
+
+  bool validate() {
+    if (nameC.text.isEmpty || emailC.text.isEmpty || passwordC.text.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,23 +67,30 @@ class SignUpPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Full Name',
+                  controller: nameC,
                 ),
                 16.heightBox,
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Email',
+                  controller: emailC,
                 ),
                 16.heightBox,
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Password',
                   obscureText: true,
+                  controller: passwordC,
                 ),
                 30.heightBox,
                 CustomFilledButton(
                   title: 'Continue',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up-profile');
+                    if (validate()) {
+                      Navigator.pushNamed(context, '/sign-up-profile');
+                    } else {
+                      showCustomSnackbar(context, 'Semua field harus diisi');
+                    }
                   },
                 ),
               ],
@@ -77,7 +101,7 @@ class SignUpPage extends StatelessWidget {
             title: 'Sign In',
             onPressed: () {},
           ),
-          58.heightBox,
+          30.heightBox,
         ],
       ),
     );
