@@ -1,4 +1,4 @@
-import 'package:bank_sha/ui/pages/sign_page.dart';
+import 'package:bank_sha/ui/pages/sign_in_page.dart';
 import 'package:bank_sha/ui/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import '../ui/pages/home_page.dart';

@@ -7,8 +7,24 @@ import '../widgets/custom_image_logo.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/custom_title_page.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  final emailC = TextEditingController(text: '');
+  final passC = TextEditingController(text: '');
+
+  bool validate() {
+    if (emailC.text.isEmpty || passC.text.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +46,15 @@ class SignInPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Email',
+                  controller: emailC,
                 ),
                 16.heightBox,
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Password',
                   obscureText: true,
+                  controller: passC,
                 ),
                 8.heightBox,
                 Align(
