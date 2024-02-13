@@ -154,9 +154,8 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
                           context.read<AuthBloc>().add(
                                 AuthRegister(
                                   widget.data.copyWith(
-                                    ktp: 'data:image/png;base64,' +
-                                        base64Encode(File(selectedImage!.path)
-                                            .readAsBytesSync()),
+                                    ktp:
+                                        'data:image/png;base64,${base64Encode(File(selectedImage!.path).readAsBytesSync())}',
                                   ),
                                 ),
                               );
