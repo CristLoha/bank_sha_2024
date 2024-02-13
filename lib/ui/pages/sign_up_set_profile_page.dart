@@ -38,6 +38,18 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
     }
   }
 
+  selectImage() async {
+    final imagePicker = ImagePicker();
+    final XFile? image =
+        await imagePicker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        selectedImage = image;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +71,7 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    final image = await selectImage();
-                    setState(() {
-                      selectedImage = image;
-                    });
+                    selectImage();
                   },
                   child: Container(
                     width: 120.w,
@@ -110,24 +119,28 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                 CustomFilledButton(
                   title: 'Continue',
                   onPressed: () {
-                    if (validate()) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignUpSetKtpPage(
-                              data: widget.data.copyWith(
-                                pin: pinC.text,
-                                profilePicture: selectedImage == null
-                                    ? null
-                                    : 'data:image/png;base64,${base64Encode(
-                                        File(selectedImage!.path)
-                                            .readAsBytesSync(),
-                                      )}',
-                              ),
-                            ),
-                          ));
+                    if (pinC.text.isEmpty) {
+                      showCustomSnackbar(
+                        context,
+                        'Field PIN harus diisi',
+                      );
                     } else {
-                      showCustomSnackbar(context, 'PIN harus 6 digit');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpSetKtpPage(
+                            data: widget.data.copyWith(
+                              profilePicture: selectedImage == null
+                                  ? null
+                                  : 'data:image/png;base64,${base64Encode(
+                                      File(selectedImage!.path)
+                                          .readAsBytesSync(),
+                                    )}',
+                              pin: pinC.text,
+                            ),
+                          ),
+                        ),
+                      );
                     }
                   },
                 ),

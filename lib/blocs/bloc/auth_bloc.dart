@@ -3,6 +3,8 @@ import 'package:bank_sha/models/user_model.dart';
 import 'package:bank_sha/services/auth_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../models/sign_in_form_model.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 

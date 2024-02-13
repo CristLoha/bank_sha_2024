@@ -1,25 +1,24 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class SignInFormModel {
   final String? email;
-  final String? paswwrod;
+  final String? password;
   SignInFormModel({
     this.email,
-    this.paswwrod,
+    this.password,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'email': email,
-      'paswwrod': paswwrod,
+      'password': password,
     };
   }
 
   factory SignInFormModel.fromMap(Map<String, dynamic> map) {
     return SignInFormModel(
-      email: map['email'] != null ? map['email'] as String : null,
-      paswwrod: map['paswwrod'] != null ? map['paswwrod'] as String : null,
+      email: map['email'],
+      password: map['password'],
     );
   }
 

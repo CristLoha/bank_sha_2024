@@ -26,7 +26,7 @@ class AuthRegister extends AuthEvent {
 }
 
 class AuthLogin extends AuthEvent {
-  final SignUpFormModel data;
+  final SignInFormModel data;
 
   const AuthLogin(this.data);
 
