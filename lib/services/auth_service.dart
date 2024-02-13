@@ -3,7 +3,6 @@ import 'package:bank_sha/models/sign_in_form_model.dart';
 import 'package:bank_sha/models/sign_up_form_model.dart';
 import 'package:bank_sha/shared/shared_values.dart';
 import 'package:http/http.dart' as http;
-
 import '../models/user_model.dart';
 
 class AuthService {
@@ -34,7 +33,7 @@ class AuthService {
         body: data.toJson(),
       );
       if (res.statusCode == 200) {
-        UserModel user = UserModel.fromJson(res.body);
+        UserModel user = UserModel.fromJson(jsonDecode(res.body));
         user = user.copyWith(password: data.password);
 
         return user;
@@ -53,7 +52,7 @@ class AuthService {
         body: data.toJson(),
       );
       if (res.statusCode == 200) {
-        UserModel user = UserModel.fromJson(res.body);
+        UserModel user = UserModel.fromJson(jsonDecode(res.body));
         user = user.copyWith(password: data.password);
 
         return user;

@@ -30,14 +30,6 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
   final pinC = TextEditingController(text: '');
   XFile? selectedImage;
 
-  bool validate() {
-    if (pinC.text.length != 6) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   selectImage() async {
     final imagePicker = ImagePicker();
     final XFile? image =
@@ -52,6 +44,7 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.data.toJson());
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.symmetric(
@@ -123,6 +116,11 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                       showCustomSnackbar(
                         context,
                         'Field PIN harus diisi',
+                      );
+                    } else if (pinC.text.length != 6) {
+                      showCustomSnackbar(
+                        context,
+                        'PIN harus memiliki 6 digit',
                       );
                     } else {
                       Navigator.push(

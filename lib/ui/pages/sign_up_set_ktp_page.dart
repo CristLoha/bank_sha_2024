@@ -1,23 +1,19 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
+import 'package:bank_sha/models/sign_up_form_model.dart';
+import 'package:bank_sha/shared/icon_string.dart';
+import 'package:bank_sha/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:bank_sha/models/sign_up_form_model.dart';
-import 'package:bank_sha/shared/box_extension.dart';
-import 'package:bank_sha/ui/widgets/custom_filled_button.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../shared/theme.dart';
-import '../../shared/icon_string.dart';
-import '../../shared/shared_methods.dart';
-import '../widgets/custom_image_logo.dart';
+
+import '../../blocs/bloc/auth_bloc.dart';
+import '../widgets/custom_filled_button.dart';
 import '../widgets/custom_text_button.dart';
-import '../widgets/custom_title_page.dart';
 
 class SignUpSetKtpPage extends StatefulWidget {
   final SignUpFormModel data;
+
   const SignUpSetKtpPage({
     Key? key,
     required this.data,
@@ -28,60 +24,83 @@ class SignUpSetKtpPage extends StatefulWidget {
 }
 
 class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
-  bool validate() {
-    if (selectedImage == null) {
-      return false;
-    } else {
-      return true;
+  XFile? selectedImage;
+
+  selectImage() async {
+    final imagePicker = ImagePicker();
+    final XFile? image =
+        await imagePicker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        selectedImage = image;
+      });
     }
   }
 
-  XFile? selectedImage;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthFailed) {
-            showCustomSnackbar(context, state.e);
-          }
-          if (state is AuthSuccess) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/home', (route) => false);
-          }
-        },
-        builder: (context, state) {
-          if (state is AuthLoading) {
-            return const Center(
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthSuccess) {
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        }
+      },
+      builder: (context, state) {
+        if (state is AuthLoading) {
+          return const Scaffold(
+            body: Center(
               child: CircularProgressIndicator(),
-            );
-          }
-          return ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: 24.w,
+            ),
+          );
+        }
+
+        return Scaffold(
+          body: ListView(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
             ),
             children: [
-              const CustomImageLogo(),
-              const CustomTitlePage(title: 'Verify Your\nAccount'),
-              30.heightBox,
+              Container(
+                width: 155,
+                height: 50,
+                margin: const EdgeInsets.only(
+                  top: 100,
+                  bottom: 100,
+                ),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/img_logo_light.png',
+                    ),
+                  ),
+                ),
+              ),
+              Text(
+                'Verify Your\nAccount',
+                style: blackTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: semiBold,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               Container(
                 padding: const EdgeInsets.all(22),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(20),
                   color: whiteColor,
                 ),
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () async {
-                        final image = await selectImage();
-                        setState(() {
-                          selectedImage = image;
-                        });
+                      onTap: () {
+                        selectImage();
                       },
                       child: Container(
-                        width: 120.w,
-                        height: 120.h,
+                        width: 120,
+                        height: 120,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: lightBackgroundColor,
@@ -101,12 +120,14 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
                             : Center(
                                 child: Image.asset(
                                   IconString.upload,
-                                  width: 32.w,
+                                  width: 32,
                                 ),
                               ),
                       ),
                     ),
-                    16.heightBox,
+                    const SizedBox(
+                      height: 16,
+                    ),
                     Text(
                       'Passport/ID Card',
                       style: blackTextStyle.copyWith(
@@ -114,50 +135,52 @@ class _SignUpSetKtpPageState extends State<SignUpSetKtpPage> {
                         fontWeight: medium,
                       ),
                     ),
-                    50.heightBox,
+                    const SizedBox(
+                      height: 50,
+                    ),
                     CustomFilledButton(
                       title: 'Continue',
                       onPressed: () {
-                        if (validate()) {
+                        if (selectedImage == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: const Text(
+                                'Gambar tidak boleh kosong',
+                              ),
+                              backgroundColor: redColor,
+                            ),
+                          );
+                        } else {
                           context.read<AuthBloc>().add(
                                 AuthRegister(
                                   widget.data.copyWith(
-                                    ktp: selectedImage == null
-                                        ? null
-                                        : 'data:image/png;base64,${base64Encode(
-                                            File(selectedImage!.path)
-                                                .readAsBytesSync(),
-                                          )}',
+                                    ktp: 'data:image/png;base64,' +
+                                        base64Encode(File(selectedImage!.path)
+                                            .readAsBytesSync()),
                                   ),
                                 ),
                               );
-                        } else {
-                          showCustomSnackbar(
-                              context, 'Gambar tidak boleh kosong');
                         }
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
-              60.heightBox,
+              const SizedBox(
+                height: 60,
+              ),
               CustomTextButton(
-                  title: 'Skip for Now',
-                  onPressed: () {
-                    context.read<AuthBloc>().add(
-                          AuthRegister(
-                            widget.data,
-                          ),
-                        );
-                    Navigator.pushNamed(
-                      context,
-                      '/signup-success',
-                    );
-                  })
+                title: 'Skip for Now',
+                onPressed: () {
+                  context.read<AuthBloc>().add(
+                        AuthRegister(widget.data),
+                      );
+                },
+              ),
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
