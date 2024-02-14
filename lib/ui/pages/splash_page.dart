@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       () {
         Navigator.pushNamedAndRemoveUntil(
           context,
-          '/onboarding',
+          '/home',
           (route) => false,
         );
       },
