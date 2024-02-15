@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/theme.dart';
 
-class CustomPinButton extends StatelessWidget {
+class CustomNumberButton extends StatelessWidget {
   final String number;
   final Function()? onTap;
-  const CustomPinButton({
+  const CustomNumberButton({
     required this.number,
     this.onTap,
     super.key,

@@ -23,7 +23,7 @@ class HomeServicesItem extends StatelessWidget {
           Container(
             width: 70.w,
             height: 70.h,
-            margin: const EdgeInsets.only(bottom: 8),
+            margin: EdgeInsets.only(bottom: 8.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../shared/shared_methods.dart';
 import '../../../shared/theme.dart';
-import '../../widgets/custom_pin_button.dart';
+import '../../widgets/custom_number_button.dart';
 
 class PinPage extends StatefulWidget {
   const PinPage({super.key});
@@ -92,39 +92,39 @@ class _PinPageState extends State<PinPage> {
                   childAspectRatio: 1,
                   shrinkWrap: true,
                   children: [
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '1',
                       onTap: () => addPin('1'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '2',
                       onTap: () => addPin('2'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '3',
                       onTap: () => addPin('3'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '4',
                       onTap: () => addPin('4'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '5',
                       onTap: () => addPin('5'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '6',
                       onTap: () => addPin('6'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '7',
                       onTap: () => addPin('7'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '8',
                       onTap: () => addPin('8'),
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '9',
                       onTap: () => addPin('9'),
                     ),
@@ -132,7 +132,7 @@ class _PinPageState extends State<PinPage> {
                       width: 60,
                       height: 60,
                     ),
-                    CustomPinButton(
+                    CustomNumberButton(
                       number: '0',
                       onTap: () => addPin('0'),
                     ),

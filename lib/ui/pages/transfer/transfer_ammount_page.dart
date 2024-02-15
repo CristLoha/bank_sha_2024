@@ -1,55 +1,58 @@
 import 'package:bank_sha/shared/box_extension.dart';
-import 'package:bank_sha/shared/shared_methods.dart';
-import 'package:bank_sha/ui/widgets/custom_number_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../../shared/shared_methods.dart';
 import '../../../shared/theme.dart';
 import '../../widgets/custom_filled_button.dart';
+import '../../widgets/custom_number_button.dart';
 import '../../widgets/custom_text_button.dart';
 
-class TopUpAmountPage extends StatefulWidget {
-  const TopUpAmountPage({super.key});
+class TransferAmountPage extends StatefulWidget {
+  const TransferAmountPage({super.key});
 
   @override
-  State<TopUpAmountPage> createState() => _TopUpAmountPageState();
+  State<TransferAmountPage> createState() => _TransferAmountPageState();
 }
 
-class _TopUpAmountPageState extends State<TopUpAmountPage> {
-  final TextEditingController ammountController =
+class _TransferAmountPageState extends State<TransferAmountPage> {
+  final TextEditingController amountController =
       TextEditingController(text: '0');
   @override
   void initState() {
     super.initState();
-    ammountController.addListener(() {
-      final text = ammountController.text;
-      ammountController.value = ammountController.value.copyWith(
+    amountController.addListener(() {
+      final text = amountController.text;
+      amountController.value = amountController.value.copyWith(
         text: NumberFormat.currency(
           locale: 'id',
           decimalDigits: 0,
           symbol: '',
-        ).format(int.parse(text.replaceAll('.', ''))),
+        ).format(
+          int.parse(
+            text.replaceAll('.', ''),
+          ),
+        ),
       );
     });
   }
 
   addAmmount(String number) {
-    if (ammountController.text == '0') {
-      ammountController.text = '';
+    if (amountController.text == '0') {
+      amountController.text = '';
     }
     setState(() {
-      ammountController.text = ammountController.text + number;
+      amountController.text = amountController.text + number;
     });
   }
 
   deleteAmmount() {
-    if (ammountController.text.isNotEmpty) {
+    if (amountController.text.isNotEmpty) {
       setState(() {
-        ammountController.text = ammountController.text
-            .substring(0, ammountController.text.length - 1);
-        if (ammountController.text == '') {
-          ammountController.text = '0';
+        amountController.text = amountController.text
+            .substring(0, amountController.text.length - 1);
+        if (amountController.text == '') {
+          amountController.text = '0';
         }
       });
     }
@@ -60,7 +63,7 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
     return Scaffold(
       backgroundColor: darkBackgroundColor,
       body: ListView(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 58,
         ),
         children: [
@@ -79,7 +82,7 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
             child: SizedBox(
               width: 200.w,
               child: TextFormField(
-                controller: ammountController,
+                controller: amountController,
                 cursorColor: greyColor,
                 enabled: false,
                 style: whiteTextStyle.copyWith(
@@ -105,7 +108,7 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
           ),
           66.heightBox,
           GridView.count(
-            physics: const NeverScrollableScrollPhysics(),
+            physics: NeverScrollableScrollPhysics(),
             crossAxisCount: 3,
             mainAxisSpacing: 20,
             crossAxisSpacing: 45,
@@ -177,10 +180,10 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
           ),
           50.heightBox,
           CustomFilledButton(
-            title: 'Checkout Now',
+            title: 'Continue',
             onPressed: () async {
               final int ammount = int.parse(
-                ammountController.text.replaceAll('.', '').replaceAll('Rp', ''),
+                amountController.text.replaceAll('.', '').replaceAll('Rp', ''),
               );
 
               if (ammount == 0) {
@@ -188,10 +191,9 @@ class _TopUpAmountPageState extends State<TopUpAmountPage> {
                     context, 'Silahkan masukkan jumlah yang valid');
               } else {
                 if (await Navigator.pushNamed(context, '/pin') == true) {
-                  await launchUrl(Uri.parse('https://demo.midtrans.com/'));
                   if (mounted) {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, '/topup-success', (route) => false);
+                        context, '/transfer-success', (route) => false);
                   }
                 }
               }

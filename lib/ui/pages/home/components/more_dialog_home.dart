@@ -38,48 +38,49 @@ class MoreDialogHome extends StatelessWidget {
               ),
             ),
             13.heightBox,
-            GridView.count(
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 3,
-              mainAxisSpacing: 9,
-              crossAxisSpacing: 9,
-              childAspectRatio: 0.82,
-              shrinkWrap: true,
-              children: [
-                HomeServicesItem(
-                  iconUrl: IconString.data,
-                  title: 'Data',
-                  onTap: () => Navigator.pushNamed(
-                    context,
-                    '/data-provider',
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3,
+                mainAxisSpacing: 9,
+                crossAxisSpacing: 9,
+                childAspectRatio: 0.7,
+                shrinkWrap: true,
+                children: [
+                  HomeServicesItem(
+                    iconUrl: IconString.data,
+                    title: 'Data',
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      '/data-provider',
+                    ),
                   ),
-                ),
-                HomeServicesItem(
-                  iconUrl: IconString.water,
-                  title: 'Water',
-                  onTap: () {},
-                ),
-                HomeServicesItem(
-                  iconUrl: IconString.stream,
-                  title: 'Stream',
-                  onTap: () {},
-                ),
-                HomeServicesItem(
-                  iconUrl: IconString.movie,
-                  title: 'Movie',
-                  onTap: () {},
-                ),
-                HomeServicesItem(
-                  iconUrl: IconString.food,
-                  title: 'Food',
-                  onTap: () {},
-                ),
-                HomeServicesItem(
-                  iconUrl: IconString.travel,
-                  title: 'Travel',
-                  onTap: () {},
-                ),
-              ],
+                  HomeServicesItem(
+                    iconUrl: IconString.water,
+                    title: 'Water',
+                    onTap: () {},
+                  ),
+                  HomeServicesItem(
+                    iconUrl: IconString.stream,
+                    title: 'Stream',
+                    onTap: () {},
+                  ),
+                  HomeServicesItem(
+                    iconUrl: IconString.movie,
+                    title: 'Movie',
+                    onTap: () {},
+                  ),
+                  HomeServicesItem(
+                    iconUrl: IconString.food,
+                    title: 'Food',
+                    onTap: () {},
+                  ),
+                  HomeServicesItem(
+                    iconUrl: IconString.travel,
+                    title: 'Travel',
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
           ],
         ),

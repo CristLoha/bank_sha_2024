@@ -5,15 +5,21 @@ import 'package:flutter/material.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/not_found_page.dart';
 import '../ui/pages/onboarding/onboarding_page.dart';
+import '../ui/pages/package/data_package_page.dart';
+import '../ui/pages/package/data_success_page.dart';
 import '../ui/pages/profile/profile_edit_page.dart';
 import '../ui/pages/profile/profile_edit_pin_page.dart';
 import '../ui/pages/profile/profile_edit_success_page.dart';
+import '../ui/pages/provider/data_provider_page.dart';
 import '../ui/pages/signup/sign_up_page.dart';
 import '../ui/pages/signup/sign_up_success_page.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/top-up/top_up_amount_page.dart';
 import '../ui/pages/top-up/top_up_page.dart';
 import '../ui/pages/top-up/top_up_success_page.dart';
+import '../ui/pages/transfer/transfer_ammount_page.dart';
+import '../ui/pages/transfer/transfer_page.dart';
+import '../ui/pages/transfer/transfer_success_page.dart';
 
 class AppRouter {
   Route onRoute(RouteSettings settings) {
@@ -83,6 +89,31 @@ class AppRouter {
       case '/topup-success':
         return MaterialPageRoute(
           builder: (context) => const TopUpSuccessPage(),
+        );
+      case '/transfer':
+        return MaterialPageRoute(
+          builder: (context) => const TransferPage(),
+        );
+      case '/transfer-amount':
+        return MaterialPageRoute(
+          builder: (context) => const TransferAmountPage(),
+        );
+      case '/transfer-success':
+        return MaterialPageRoute(
+          builder: (context) => const TransferSuccessPage(),
+        );
+
+      case '/data-provider':
+        return MaterialPageRoute(
+          builder: (context) => const DataProviderPage(),
+        );
+      case '/data-package':
+        return MaterialPageRoute(
+          builder: (context) => const DataPackagePage(),
+        );
+      case '/data-success':
+        return MaterialPageRoute(
+          builder: (context) => const DataSuccessPage(),
         );
       default:
         return MaterialPageRoute(
