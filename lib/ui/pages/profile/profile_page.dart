@@ -19,16 +19,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: lightBackgroundColor,
-        elevation: 0,
-        centerTitle: true,
-        iconTheme: IconThemeData(color: blackColor),
-        title: Text(
+        title: const Text(
           'My Profile',
-          style: blackTextStyle.copyWith(
-            fontSize: 20.sp,
-            fontWeight: semiBold,
-          ),
         ),
       ),
       body: ListView(

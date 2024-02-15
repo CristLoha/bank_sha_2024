@@ -36,6 +36,18 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             scaffoldBackgroundColor: lightBackgroundColor,
             useMaterial3: false,
+            appBarTheme: AppBarTheme(
+              backgroundColor: lightBackgroundColor,
+              elevation: 0,
+              centerTitle: true,
+              iconTheme: IconThemeData(
+                color: blackColor,
+              ),
+              titleTextStyle: blackTextStyle.copyWith(
+                fontSize: 20,
+                fontWeight: semiBold,
+              ),
+            ),
           ),
           initialRoute: '/',
           onGenerateRoute: router.onRoute,
