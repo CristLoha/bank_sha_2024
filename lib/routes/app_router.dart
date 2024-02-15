@@ -1,10 +1,11 @@
-import 'package:bank_sha/ui/pages/sign_in_page.dart';
-import 'package:bank_sha/ui/pages/sign_up_page.dart';
+import 'package:bank_sha/ui/pages/profile/profile_page.dart';
+import 'package:bank_sha/ui/pages/signin/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/not_found_page.dart';
 import '../ui/pages/onboarding_page.dart';
-import '../ui/pages/sign_up_success_page.dart';
+import '../ui/pages/signup/sign_up_page.dart';
+import '../ui/pages/signup/sign_up_success_page.dart';
 import '../ui/pages/splash_page.dart';
 
 class AppRouter {
@@ -37,6 +38,11 @@ class AppRouter {
       case '/home':
         return MaterialPageRoute(
           builder: (context) => const HomePage(),
+        );
+
+      case '/profile':
+        return MaterialPageRoute(
+          builder: (context) => const ProfilePage(),
         );
       default:
         return MaterialPageRoute(

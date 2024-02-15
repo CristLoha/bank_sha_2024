@@ -1,19 +1,18 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:bank_sha/shared/shared_methods.dart';
-import 'package:bank_sha/ui/pages/sign_up_set_ktp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/ui/widgets/custom_filled_button.dart';
 import 'package:bank_sha/ui/widgets/custom_text_form_field.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../models/sign_up_form_model.dart';
-import '../../shared/icon_string.dart';
-import '../../shared/theme.dart';
-import '../widgets/custom_image_logo.dart';
-import '../widgets/custom_title_page.dart';
+import '../../../models/sign_up_form_model.dart';
+import '../../../shared/icon_string.dart';
+import '../../../shared/theme.dart';
+import '../../widgets/custom_image_logo.dart';
+import '../../widgets/custom_title_page.dart';
+import 'sign_up_set_ktp_page.dart';
 
 class SignUpSetProfilePage extends StatefulWidget {
   final SignUpFormModel data;
@@ -44,7 +43,6 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.data.toJson());
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.symmetric(

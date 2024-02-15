@@ -21,14 +21,14 @@ class ProfileHome extends StatelessWidget {
               Text(
                 'Howdy,',
                 style: greyTextStyle.copyWith(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                 ),
               ),
               2.heightBox,
               Text(
                 'shaynahan',
                 style: blackTextStyle.copyWith(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: semiBold,
                 ),
               )

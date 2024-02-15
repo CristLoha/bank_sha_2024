@@ -1,15 +1,16 @@
 import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
 import 'package:bank_sha/models/sign_up_form_model.dart';
 import 'package:bank_sha/shared/box_extension.dart';
-import 'package:bank_sha/ui/pages/sign_up_set_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../shared/img_string.dart';
-import '../../shared/shared_methods.dart';
-import '../../shared/theme.dart';
-import '../widgets/custom_filled_button.dart';
-import '../widgets/custom_text_button.dart';
-import '../widgets/custom_text_form_field.dart';
+
+import '../../../shared/img_string.dart';
+import '../../../shared/shared_methods.dart';
+import '../../../shared/theme.dart';
+import '../../widgets/custom_filled_button.dart';
+import '../../widgets/custom_text_button.dart';
+import '../../widgets/custom_text_form_field.dart';
+import 'sign_up_set_profile_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -34,7 +35,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBackgroundColor,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthFailed) {

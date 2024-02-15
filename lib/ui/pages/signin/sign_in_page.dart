@@ -5,11 +5,11 @@ import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/ui/widgets/custom_text_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../shared/shared_methods.dart';
-import '../widgets/custom_filled_button.dart';
-import '../widgets/custom_image_logo.dart';
-import '../widgets/custom_text_form_field.dart';
-import '../widgets/custom_title_page.dart';
+import '../../../shared/shared_methods.dart';
+import '../../widgets/custom_filled_button.dart';
+import '../../widgets/custom_image_logo.dart';
+import '../../widgets/custom_text_form_field.dart';
+import '../../widgets/custom_title_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

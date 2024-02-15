@@ -1,5 +1,6 @@
 import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
 import 'package:bank_sha/routes/app_router.dart';
+import 'package:bank_sha/shared/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Bank SHA',
           theme: ThemeData(
+            scaffoldBackgroundColor: lightBackgroundColor,
             useMaterial3: false,
           ),
           initialRoute: '/',

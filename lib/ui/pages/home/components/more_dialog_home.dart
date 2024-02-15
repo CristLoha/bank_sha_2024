@@ -15,7 +15,7 @@ class MoreDialogHome extends StatelessWidget {
       insetPadding: EdgeInsets.zero,
       alignment: Alignment.bottomCenter,
       content: Container(
-        height: 326,
+        height: 326.h,
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(
           left: 30.w,
@@ -33,7 +33,7 @@ class MoreDialogHome extends StatelessWidget {
             Text(
               'Do More With Us',
               style: blackTextStyle.copyWith(
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: semiBold,
               ),
             ),

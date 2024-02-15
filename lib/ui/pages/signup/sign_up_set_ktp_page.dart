@@ -6,10 +6,9 @@ import 'package:bank_sha/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../blocs/bloc/auth_bloc.dart';
-import '../widgets/custom_filled_button.dart';
-import '../widgets/custom_text_button.dart';
+import '../../../blocs/bloc/auth_bloc.dart';
+import '../../widgets/custom_filled_button.dart';
+import '../../widgets/custom_text_button.dart';
 
 class SignUpSetKtpPage extends StatefulWidget {
   final SignUpFormModel data;

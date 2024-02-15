@@ -23,9 +23,9 @@ class BottomNavbar extends StatelessWidget {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         selectedLabelStyle:
-            blueTextStyle.copyWith(fontSize: 10, fontWeight: medium),
+            blueTextStyle.copyWith(fontSize: 10.sp, fontWeight: medium),
         unselectedLabelStyle:
-            blackTextStyle.copyWith(fontSize: 10, fontWeight: medium),
+            blackTextStyle.copyWith(fontSize: 10.sp, fontWeight: medium),
         items: [
           BottomNavigationBarItem(
               icon: Image.asset(

@@ -1,7 +1,6 @@
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/ui/pages/home/components/more_dialog_home.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../shared/icon_string.dart';
 import '../../../../shared/theme.dart';
 import '../../../widgets/home_services_item.dart';
