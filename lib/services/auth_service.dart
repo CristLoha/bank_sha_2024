@@ -85,6 +85,8 @@ class AuthService {
 
     if (value != null) {
       token = value;
+
+      print('token');
     }
 
     return token;
@@ -100,8 +102,7 @@ class AuthService {
           email: values['email'],
           password: values['password'],
         );
-        print('get user from local ${data.toJson()}');
-        return data;
+               return data;
       } else {
         throw 'unnauthenticated';
       }
