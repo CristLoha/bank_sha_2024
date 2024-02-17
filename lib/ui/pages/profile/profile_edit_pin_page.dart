@@ -5,9 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../shared/theme.dart';
 import '../../widgets/custom_text_form_field.dart';
 
-class ProfileEditPinPage extends StatelessWidget {
+class ProfileEditPinPage extends StatefulWidget {
   const ProfileEditPinPage({super.key});
 
+  @override
+  State<ProfileEditPinPage> createState() => _ProfileEditPinPageState();
+}
+
+class _ProfileEditPinPageState extends State<ProfileEditPinPage> {
+  final oldPinC = TextEditingController(text: '');
+  final newPinC = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,16 +36,18 @@ class ProfileEditPinPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'Old PIN',
                   obscureText: false,
                   keyboardType: TextInputType.number,
+                  controller: oldPinC,
                 ),
                 16.heightBox,
-                const CustomTextFormField(
+                CustomTextFormField(
                   title: 'New Pin',
                   obscureText: false,
                   keyboardType: TextInputType.number,
+                  controller: newPinC,
                 ),
                 30.heightBox,
                 CustomFilledButton(

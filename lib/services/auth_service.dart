@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'package:bank_sha/models/sign_in_form_model.dart';
 import 'package:bank_sha/models/sign_up_form_model.dart';
-import 'package:bank_sha/shared/shared_values.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import '../models/user_edit_form_model.dart';
 import '../models/user_model.dart';
 
 class AuthService {
+  String baseUrl = 'https://bwabank.my.id/api';
   Future<bool> checkEmail(String email) async {
     try {
       final res = await http.post(
-        Uri.parse('$baseUrl/api/is-email-exist'),
+        Uri.parse('$baseUrl/is-email-exist'),
         body: {
           'email': email,
         },
@@ -30,7 +31,7 @@ class AuthService {
   Future<UserModel> register(SignUpFormModel data) async {
     try {
       final res = await http.post(
-        Uri.parse('$baseUrl/api/register'),
+        Uri.parse('$baseUrl/register'),
         body: data.toJson(),
       );
       if (res.statusCode == 200) {
@@ -50,7 +51,7 @@ class AuthService {
   Future<UserModel> login(SignInFormModel data) async {
     try {
       final res = await http.post(
-        Uri.parse('$baseUrl/api/login'),
+        Uri.parse('$baseUrl/login'),
         body: data.toJson(),
       );
       if (res.statusCode == 200) {
@@ -60,6 +61,22 @@ class AuthService {
 
         return user;
       } else {
+        throw jsonDecode(res.body)['message'];
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> updateUser(UserEditFormModel data) async {
+    try {
+      final token = await AuthService().getToken();
+      final res = await http
+          .put(Uri.parse('$baseUrl/users'), body: data.toJson(), headers: {
+        'Authorization': token,
+      });
+
+      if (res.statusCode != 200) {
         throw jsonDecode(res.body)['message'];
       }
     } catch (e) {
@@ -84,9 +101,7 @@ class AuthService {
     String? value = await storage.read(key: 'token');
 
     if (value != null) {
-      token = value;
-
-      print('token');
+      token = 'Bearer$value';
     }
 
     return token;
@@ -102,7 +117,7 @@ class AuthService {
           email: values['email'],
           password: values['password'],
         );
-               return data;
+        return data;
       } else {
         throw 'unnauthenticated';
       }
