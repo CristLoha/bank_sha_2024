@@ -1,5 +1,7 @@
+import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../shared/img_string.dart';
@@ -30,33 +32,41 @@ class TopUpPage extends StatelessWidget {
             ),
           ),
           10.heightBox,
-          Row(
-            children: [
-              Image.asset(
-                ImgString.wallet,
-                width: 80.w,
-              ),
-              16.widthBox,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '8008 2208 1996',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: medium,
+          BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              if (state is AuthSuccess) {
+                return Row(
+                  children: [
+                    Image.asset(
+                      ImgString.wallet,
+                      width: 80.w,
                     ),
-                  ),
-                  2.heightBox,
-                  Text(
-                    'Angga Risky',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 12,
+                    16.widthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          state.user.cardNumber!.replaceAllMapped(
+                              RegExp(r".{4}"), (match) => "${match.group(0)} "),
+                          style: blackTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: medium,
+                          ),
+                        ),
+                        2.heightBox,
+                        Text(
+                          state.user.name.toString(),
+                          style: greyTextStyle.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                );
+              }
+              return Container();
+            },
           ),
           40.heightBox,
           Text(

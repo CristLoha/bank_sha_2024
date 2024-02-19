@@ -1,4 +1,4 @@
-import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
+import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/shared/img_string.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:flutter/material.dart';

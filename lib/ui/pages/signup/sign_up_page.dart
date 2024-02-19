@@ -1,4 +1,4 @@
-import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
+import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/models/sign_up_form_model.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:flutter/material.dart';

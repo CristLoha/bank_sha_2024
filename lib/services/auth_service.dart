@@ -23,7 +23,6 @@ class AuthService {
         return jsonDecode(res.body)['errors'];
       }
     } catch (e) {
-      print(e);
       rethrow;
     }
   }
@@ -130,6 +129,27 @@ class AuthService {
     try {
       const storage = FlutterSecureStorage();
       await storage.deleteAll();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      final token = await getToken();
+      final res = await http.post(
+        Uri.parse('$baseUrl/logout'),
+        headers: {
+          'Authorization': token,
+        },
+      );
+
+      if (res.statusCode == 200) {
+        const storage = FlutterSecureStorage();
+        await storage.deleteAll();
+      } else {
+        throw jsonDecode(res.body)['message'];
+      }
     } catch (e) {
       rethrow;
     }

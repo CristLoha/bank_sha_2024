@@ -1,4 +1,4 @@
-import 'package:bank_sha/blocs/bloc/auth_bloc.dart';
+import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/models/user_edit_form_model.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/shared/shared_methods.dart';

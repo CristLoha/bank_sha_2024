@@ -52,9 +52,10 @@ class AuthUpdatePin extends AuthEvent {
   const AuthUpdatePin(this.oldPin, this.newPin);
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         oldPin,
         newPin,
       ];
 }
+
+class AuthLogout extends AuthEvent {}
