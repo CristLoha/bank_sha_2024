@@ -1,16 +1,26 @@
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
+import 'package:bank_sha/blocs/payment_method/payment_method_bloc.dart';
+import 'package:bank_sha/models/payment_method_model.dart';
+import 'package:bank_sha/models/topup_form_model.dart';
 import 'package:bank_sha/shared/box_extension.dart';
+import 'package:bank_sha/ui/pages/top-up/top_up_amount_page.dart';
+import 'package:bank_sha/ui/widgets/custom_filled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../shared/img_string.dart';
 import '../../../shared/theme.dart';
 import '../../widgets/bank_item.dart';
-import '../../widgets/custom_filled_button.dart';
 
-class TopUpPage extends StatelessWidget {
+class TopUpPage extends StatefulWidget {
   const TopUpPage({super.key});
+
+  @override
+  State<TopUpPage> createState() => _TopUpPageState();
+}
+
+class _TopUpPageState extends State<TopUpPage> {
+  PaymentMethodModel? selectedPaymentMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -77,37 +87,61 @@ class TopUpPage extends StatelessWidget {
             ),
           ),
           14.heightBox,
-          const BankItem(
-            title: 'BANK BCA',
-            imageUrl: ImgString.bca,
-            isSelected: true,
-          ),
-          const BankItem(
-            title: 'BANK BNI',
-            imageUrl: ImgString.bni,
-            isSelected: false,
-          ),
-          const BankItem(
-            title: 'BANK Mandiri',
-            imageUrl: ImgString.mandiri,
-            isSelected: false,
-          ),
-          const BankItem(
-            title: 'BANK OCBC',
-            imageUrl: ImgString.ocbc,
-            isSelected: false,
-          ),
-          12.heightBox,
-          CustomFilledButton(
-            title: 'Continue',
-            onPressed: () => Navigator.pushNamed(
-              context,
-              '/topup-ammount',
+          BlocProvider(
+            create: (context) => PaymentMethodBloc()
+              ..add(
+                PaymentMethodGet(),
+              ),
+            child: BlocBuilder<PaymentMethodBloc, PaymentMethodState>(
+              builder: (context, state) {
+                if (state is PaymentMethodSuccess) {
+                  return Column(
+                    children: state.paymentMethods.map((paymentMethod) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedPaymentMethod = paymentMethod;
+                          });
+                        },
+                        child: BankItem(
+                          paymentMethod: paymentMethod,
+                          isSelected:
+                              paymentMethod.id == selectedPaymentMethod?.id,
+                        ),
+                      );
+                    }).toList(),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           ),
-          57.heightBox,
+          12.heightBox,
         ],
       ),
+      floatingActionButton: (selectedPaymentMethod != null)
+          ? Container(
+              margin: const EdgeInsets.all(24),
+              child: CustomFilledButton(
+                title: 'Continue',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TopUpAmountPage(
+                        data: TopupFormModel(
+                          paymentMethodCode: selectedPaymentMethod?.code,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          : Container(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:bank_sha/shared/box_extension.dart';
+import 'package:bank_sha/ui/pages/transfer/components/recents_user_transfer.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/theme.dart';
 import '../../widgets/custom_filled_button.dart';
@@ -36,17 +37,21 @@ class TransferPage extends StatelessWidget {
             title: 'by username',
             showTitle: false,
           ),
-          const ResultsUsersTransfer(),
-          274.heightBox,
-          CustomFilledButton(
-            title: 'Continue',
-            onPressed: () {
-              Navigator.pushNamed(context, '/transfer-amount');
-            },
-          ),
+          // const ResultsUsersTransfer(),
+          RecentsUsersTransfer(),
           50.heightBox,
         ],
       ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.all(24),
+        child: CustomFilledButton(
+          title: 'Continue',
+          onPressed: () {
+            Navigator.pushNamed(context, '/transfer-amount');
+          },
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
+import 'package:bank_sha/blocs/topup/topup_bloc.dart';
 import 'package:bank_sha/routes/app_router.dart';
 import 'package:bank_sha/shared/theme.dart';
 import 'package:device_preview/device_preview.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
               ..add(
                 AuthGetCurrentUser(),
               ),
+          ),
+          BlocProvider(
+            create: (context) => TopupBloc(),
           )
         ],
         child: MaterialApp(

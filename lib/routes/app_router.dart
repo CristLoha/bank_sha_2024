@@ -14,7 +14,6 @@ import '../ui/pages/provider/data_provider_page.dart';
 import '../ui/pages/signup/sign_up_page.dart';
 import '../ui/pages/signup/sign_up_success_page.dart';
 import '../ui/pages/splash_page.dart';
-import '../ui/pages/top-up/top_up_amount_page.dart';
 import '../ui/pages/top-up/top_up_page.dart';
 import '../ui/pages/top-up/top_up_success_page.dart';
 import '../ui/pages/transfer/transfer_ammount_page.dart';
@@ -82,10 +81,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const TopUpPage(),
         );
-      case '/topup-ammount':
-        return MaterialPageRoute(
-          builder: (context) => const TopUpAmountPage(),
-        );
+
       case '/topup-success':
         return MaterialPageRoute(
           builder: (context) => const TopUpSuccessPage(),
