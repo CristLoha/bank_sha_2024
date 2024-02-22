@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
 import 'package:bank_sha/blocs/topup/topup_bloc.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'package:bank_sha/models/topup_form_model.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:bank_sha/shared/shared_methods.dart';
 import 'package:bank_sha/ui/widgets/custom_number_button.dart';
-
 import '../../../shared/theme.dart';
 import '../../widgets/custom_filled_button.dart';
 import '../../widgets/custom_text_button.dart';

@@ -16,7 +16,6 @@ import '../ui/pages/signup/sign_up_success_page.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/top-up/top_up_page.dart';
 import '../ui/pages/top-up/top_up_success_page.dart';
-import '../ui/pages/transfer/transfer_ammount_page.dart';
 import '../ui/pages/transfer/transfer_page.dart';
 import '../ui/pages/transfer/transfer_success_page.dart';
 
@@ -89,10 +88,6 @@ class AppRouter {
       case '/transfer':
         return MaterialPageRoute(
           builder: (context) => const TransferPage(),
-        );
-      case '/transfer-amount':
-        return MaterialPageRoute(
-          builder: (context) => const TransferAmountPage(),
         );
       case '/transfer-success':
         return MaterialPageRoute(

@@ -5,8 +5,8 @@ import 'package:bank_sha/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 
 class UserService {
+  String baseUrl = 'https://bwabank.my.id/api';
   Future<List<UserModel>> getRecentusers() async {
-    String baseUrl = 'https://bwabank.my.id/api';
     try {
       final token = await AuthService().getToken();
 
@@ -30,14 +30,15 @@ class UserService {
   }
 
   Future<List<UserModel>> getUsersByUsername(String username) async {
-    String baseUrl = 'https://bwabank.my.id/api';
     try {
       final token = await AuthService().getToken();
 
-      final res =
-          await http.get(Uri.parse('$baseUrl/users/$username'), headers: {
-        'Authorization': token,
-      });
+      final res = await http.get(
+        Uri.parse('$baseUrl/users/$username'),
+        headers: {
+          'Authorization': token,
+        },
+      );
 
       if (res.statusCode == 200) {
         return List<UserModel>.from(
