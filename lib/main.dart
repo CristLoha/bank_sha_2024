@@ -17,7 +17,7 @@ void main() => runApp(
       ),
     );
 
-// void main() => runApp(MyApp1());
+// void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
