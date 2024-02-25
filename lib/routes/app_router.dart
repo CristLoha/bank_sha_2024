@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/not_found_page.dart';
 import '../ui/pages/onboarding/onboarding_page.dart';
-import '../ui/pages/package/data_package_page.dart';
 import '../ui/pages/package/data_success_page.dart';
 import '../ui/pages/profile/profile_edit_page.dart';
 import '../ui/pages/profile/profile_edit_pin_page.dart';
@@ -98,10 +97,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const DataProviderPage(),
         );
-      case '/data-package':
-        return MaterialPageRoute(
-          builder: (context) => const DataPackagePage(),
-        );
+
       case '/data-success':
         return MaterialPageRoute(
           builder: (context) => const DataSuccessPage(),

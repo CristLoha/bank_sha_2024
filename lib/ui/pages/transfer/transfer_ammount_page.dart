@@ -238,7 +238,7 @@ class _TransferAmountPageState extends State<TransferAmountPage> {
               ),
               50.heightBox,
               CustomFilledButton(
-                title: 'Checkout Now',
+                title: 'Continue',
                 onPressed: () async {
                   final int ammount = int.parse(
                     amountC.text.replaceAll('.', '').replaceAll('Rp', ''),

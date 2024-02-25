@@ -1,4 +1,5 @@
 import 'package:bank_sha/blocs/auth/auth_bloc.dart';
+import 'package:bank_sha/blocs/data_plan/data_plan_bloc.dart';
 import 'package:bank_sha/blocs/topup/topup_bloc.dart';
 import 'package:bank_sha/blocs/transfer/transfer_bloc.dart';
 import 'package:bank_sha/blocs/user/user_bloc.dart';
@@ -41,7 +42,10 @@ class MyApp extends StatelessWidget {
             create: (context) => TopupBloc(),
           ),
           BlocProvider(create: (context) => UserBloc()),
-          BlocProvider(create: (context) => TransferBloc())
+          BlocProvider(create: (context) => TransferBloc()),
+          BlocProvider(
+            create: (context) => DataPlanBloc(),
+          )
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

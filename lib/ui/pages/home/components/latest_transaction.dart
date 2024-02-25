@@ -1,7 +1,7 @@
+import 'package:bank_sha/blocs/transaction/transaction_bloc.dart';
 import 'package:bank_sha/shared/box_extension.dart';
 import 'package:flutter/material.dart';
-import '../../../../shared/icon_string.dart';
-import '../../../../shared/shared_methods.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shared/theme.dart';
 import '../../../widgets/home_latest_transactions.dart';
 
@@ -30,39 +30,22 @@ class LatestTransactionHome extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,
             ),
-            child: Column(
-              children: [
-                HomeLatestTranscations(
-                  iconUrl: IconString.transactionCat1,
-                  title: 'Top Up',
-                  time: 'Yesterday',
-                  value: '+ ${formatCurrency(45000, symbol: '')}',
-                ),
-                HomeLatestTranscations(
-                  iconUrl: IconString.transactionCat2,
-                  title: 'Cashback',
-                  time: 'Sep 11',
-                  value: '+ ${formatCurrency(22000, symbol: '')}',
-                ),
-                HomeLatestTranscations(
-                  iconUrl: IconString.transactionCat3,
-                  title: 'Withdraw',
-                  time: 'Sep 2',
-                  value: '- ${formatCurrency(5000, symbol: '')}',
-                ),
-                HomeLatestTranscations(
-                  iconUrl: IconString.transactionCat4,
-                  title: 'Transfer',
-                  time: 'Aug 27',
-                  value: '- ${formatCurrency(123500, symbol: '')}',
-                ),
-                HomeLatestTranscations(
-                  iconUrl: IconString.transactionCat5,
-                  title: 'Electric',
-                  time: 'Feb 18',
-                  value: '- ${formatCurrency(12300000, symbol: '')}',
-                ),
-              ],
+            child: BlocProvider(
+              create: (context) => TransactionBloc()..add(TransactionGet()),
+              child: BlocBuilder<TransactionBloc, TransactionState>(
+                builder: (context, state) {
+                  if (state is TransactionSuccess) {
+                    return Column(
+                      children: state.transactions.map((transaction) {
+                        return HomeLatestTranscations(transaction: transaction);
+                      }).toList(),
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             ),
           ),
         ],
