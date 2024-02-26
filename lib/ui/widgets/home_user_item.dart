@@ -29,7 +29,7 @@ class HomeUserItem extends StatelessWidget {
           Container(
             width: 45.w,
             height: 45.h,
-            margin: EdgeInsets.only(bottom: 13),
+            margin: const EdgeInsets.only(bottom: 13),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -42,10 +42,14 @@ class HomeUserItem extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            '@${user.username}',
-            style: blackTextStyle.copyWith(
-              fontSize: 12.sp,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              '@${user.username}',
+              style: blackTextStyle.copyWith(
+                fontSize: 12.sp,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
