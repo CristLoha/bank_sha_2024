@@ -1,16 +1,17 @@
+import 'package:bank_sha/shared/img_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../models/user_model.dart';
 import '../../shared/theme.dart';
 
 class HomeUserItem extends StatelessWidget {
-  final String imageUrl;
-  final String userName;
+  final UserModel user;
 
   const HomeUserItem({
-    required this.imageUrl,
-    required this.userName,
-    super.key,
-  });
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +29,21 @@ class HomeUserItem extends StatelessWidget {
           Container(
             width: 45.w,
             height: 45.h,
-            margin: const EdgeInsets.only(bottom: 13),
+            margin: EdgeInsets.only(bottom: 13),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                  imageUrl,
-                ),
+                image: user.profilePicture == null
+                    ? const AssetImage(
+                        ImgString.profile,
+                      )
+                    : NetworkImage(user.profilePicture!) as ImageProvider,
               ),
             ),
           ),
           Text(
-            userName,
+            '@${user.username}',
             style: blackTextStyle.copyWith(
               fontSize: 12.sp,
             ),
