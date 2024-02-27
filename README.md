@@ -1,16 +1,16 @@
-# bank_sha
+This project is a Flutter application that I developed as part of my learning journey with Build with Angga. The main objective of this project was to create a digital payment application with functionalities akin to those found in Mobile Banking apps. Throughout the course, I gained hands-on experience in building various features essential for such an application.
 
-A new Flutter project.
+The list of features implemented in this project includes:
+- Sign In
+- Sign Up
+- User Profile Management
+- PIN Security
+- Top Up functionality utilizing Midtrans payment gateway
+- Funds Transfer between accounts
+- Purchase of Data Quotas
+- Utilization of Bloc for efficient state management in Flutter
+- Integration of external APIs for enhanced functionality
 
-## Getting Started
+This project has been developed using Flutter version 3.19, ensuring compatibility with the latest enhancements and features offered by the framework.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For more details on the course that inspired this project, please refer to [Build with Angga - Full Stack Laravel Flutter: Build E-Wallet Mobile Apps](https://buildwithangga.com/kelas/full-stack-laravel-flutter-build-e-wallet-mobile-apps?main_leads=searchsuggestion).
